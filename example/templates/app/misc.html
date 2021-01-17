@@ -1,0 +1,15 @@
+{% extends 'app/base.html' %}
+
+{% load patternfly %}
+
+{% block title %}
+    Miscellaneous
+{% endblock %}
+
+{% block content %}
+
+    {% patternfly_button 'button' size='lg' %}
+    <hr class="pf-c-divider">
+    {% patternfly_alert "Something went wrong" alert_type='danger' %}
+
+{% endblock %}

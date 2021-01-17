@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+
+{% load patternfly %}
+
+{% block title %}
+    Forms
+{% endblock %}
+
+{% block content %}
+
+    <form role="form" method="post">
+        {% csrf_token %}
+        {% patternfly_form form %}
+        {% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
+    </form>
+
+{% endblock %}
