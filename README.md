@@ -1,6 +1,6 @@
 # django-patternfly
 
-![CI](https://github.com/Rintsi/django-patternfly/workflows/CI/badge.svg)[![Coverage Status](https://coveralls.io/repos/github/Rintsi/django-patternfly/badge.svg?branch=master)](https://coveralls.io/github/Rintsi/django-patternfly?branch=master)
+![CI](https://github.com/Rintsi/django-patternfly/workflows/CI/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/Rintsi/django-patternfly/badge.svg?branch=master)](https://coveralls.io/github/Rintsi/django-patternfly?branch=master)
 
 Patternfly integration for Django. Ported from [django-bootstrap4](https://github.com/zostera/django-bootstrap4)
 
