@@ -7,26 +7,14 @@ from django.template import Context
 from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
 
-from ..bootstrap import (
+from ..patternfly import (
     css_url,
     css_additions_url,
-    get_bootstrap_setting,
+    get_patternfly_setting,
     javascript_url,
     jquery_slim_url,
     jquery_url,
     theme_url,
-)
-from ..components import render_alert
-from ..forms import (
-    render_button,
-    render_field,
-    render_field_and_label,
-    render_form,
-    render_form_errors,
-    render_form_group,
-    render_formset,
-    render_formset_errors,
-    render_label,
 )
 from ..utils import (
     handle_var,
@@ -37,14 +25,6 @@ from ..utils import (
     render_template_file,
     url_replace_param,
 )
-
-MESSAGE_LEVEL_CLASSES = {
-    message_constants.DEBUG: "alert alert-warning",
-    message_constants.INFO: "alert alert-info",
-    message_constants.SUCCESS: "alert alert-success",
-    message_constants.WARNING: "alert alert-warning",
-    message_constants.ERROR: "alert alert-danger",
-}
 
 register = template.Library()
 
@@ -57,31 +37,7 @@ def bootstrap_setting(value):
     A simple way to read bootstrap settings in a template.
     Please consider this filter private for now, do not use it in your own templates.
     """
-    return get_bootstrap_setting(value)
-
-
-@register.filter
-def bootstrap_message_classes(message):
-    """Return the message classes for a message."""
-    extra_tags = None
-    try:
-        extra_tags = message.extra_tags
-    except AttributeError:
-        pass
-    if not extra_tags:
-        extra_tags = ""
-    classes = [extra_tags]
-    try:
-        level = message.level
-    except AttributeError:
-        pass
-    else:
-        try:
-            classes.append(MESSAGE_LEVEL_CLASSES[level])
-        except KeyError:
-            classes.append("alert alert-danger")
-    return " ".join(classes).strip()
-
+    return get_patternfly_setting(value)
 
 @register.simple_tag
 def bootstrap_jquery_url():
@@ -289,9 +245,9 @@ def bootstrap_jquery(jquery=True):
     if not jquery:
         return ""
     elif jquery == "slim":
-        jquery = get_bootstrap_setting("jquery_slim_url")
+        jquery = get_patternfly_setting("jquery_slim_url")
     else:
-        jquery = get_bootstrap_setting("jquery_url")
+        jquery = get_patternfly_setting("jquery_url")
 
     if isinstance(jquery, str):
         jquery = dict(src=jquery)
@@ -335,7 +291,7 @@ def bootstrap_javascript(jquery=False):
     javascript_tags = []
 
     # Get jquery value from setting or leave default.
-    jquery = jquery or get_bootstrap_setting("include_jquery", False)
+    jquery = jquery or get_patternfly_setting("include_jquery", False)
 
     # Include jQuery if the option is passed
     if jquery:

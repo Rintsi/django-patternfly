@@ -1,8 +1,32 @@
-{% extends 'app/base.html' %}
 {% load patternfly %}
+{% load static %}
 
-{% block title %}django-patternfly{% endblock %}
-
-{% block content %}
-    This is <em>Patternfly</em> for <strong>Django</strong>.
-{% endblock %}
+<html>
+    <head>
+        <title>{% block title %}Master title{% endblock %}</title>
+        {% patternfly_css %}
+        {% if 'javascript_in_head'|bootstrap_setting %}
+          {% bootstrap_javascript %}
+        {% endif %}
+    </head>
+    <body>
+        <div class="pf-c-page">
+            <header class="pf-c-page__header">
+              <div class="pf-c-page__header-brand">
+                <div class="pf-c-page__header-brand-toggle">toggle</div>
+                <a href="#" class="pf-c-page__header-brand-link">Logo</a>
+              </div>
+              <div class="pf-c-page__header-tools">header-tools</div>
+            </header>
+            <div class="pf-c-page__sidebar">
+              <div class="pf-c-page__sidebar-body">pf-c-nav</div>
+            </div>
+            <main class="pf-c-page__main" tabindex="-1">
+              <section class="pf-c-page__main-nav">`.pf-c-page__main-nav` for tertiary navigation</section>
+              <section class="pf-c-page__main-breadcrumb">`.pf-c-page__main-breadcrumb` for breadcrumbs</section>
+              <section class="pf-c-page__main-section">`.pf-c-page__main-section` for main sections</section>
+              <section class="pf-c-page__main-wizard">`.pf-c-page__main-wizard` for wizards</section>
+            </main>
+          </div>
+    </body>
+</html>

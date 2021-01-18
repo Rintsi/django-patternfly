@@ -145,8 +145,6 @@ LOGGING = {
 
 # Settings for django-patternfly
 PATTERNFLY = {
-    "error_css_class": "patternfly-error",
-    "required_css_class": "patternfly-required",
     "javascript_in_head": True,
     "include_jquery": True,
 }

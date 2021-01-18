@@ -52,7 +52,7 @@ PATTERNFLY_DEFAULTS = {
 }
 
 
-def get_bootstrap_setting(name, default=None):
+def get_patternfly_setting(name, default=None):
     """Read a setting."""
     # Start with a copy of default settings
     PATTERNFLY = PATTERNFLY_DEFAULTS.copy()
@@ -68,12 +68,12 @@ def get_bootstrap_setting(name, default=None):
 
 def jquery_url():
     """Return the full url to jQuery library file to use."""
-    return get_bootstrap_setting("jquery_url")
+    return get_patternfly_setting("jquery_url")
 
 
 def jquery_slim_url():
     """Return the full url to slim jQuery library file to use."""
-    return get_bootstrap_setting("jquery_slim_url")
+    return get_patternfly_setting("jquery_slim_url")
 
 
 def include_jquery():
@@ -82,24 +82,24 @@ def include_jquery():
 
     Setting could be False, True|'full', or 'slim'
     """
-    return get_bootstrap_setting("include_jquery")
+    return get_patternfly_setting("include_jquery")
 
 def javascript_url():
     """Return the full url to the Bootstrap JavaScript file."""
-    return get_bootstrap_setting("javascript_url")
+    return get_patternfly_setting("javascript_url")
 
 
 def css_url():
     """Return the full url to the Bootstrap CSS file."""
-    return get_bootstrap_setting("css_url")
+    return get_patternfly_setting("css_url")
 
 def css_additions_url():
     """Return the full url to the Bootstrap CSS file."""
-    return get_bootstrap_setting("css_additions_url")
+    return get_patternfly_setting("css_additions_url")
 
 def theme_url():
     """Return the full url to the theme CSS file."""
-    return get_bootstrap_setting("theme_url")
+    return get_patternfly_setting("theme_url")
 
 
 def i18n_enabled():
@@ -115,15 +115,15 @@ def get_renderer(renderers, **kwargs):
 
 
 def get_formset_renderer(**kwargs):
-    renderers = get_bootstrap_setting("formset_renderers")
+    renderers = get_patternfly_setting("formset_renderers")
     return get_renderer(renderers, **kwargs)
 
 
 def get_form_renderer(**kwargs):
-    renderers = get_bootstrap_setting("form_renderers")
+    renderers = get_patternfly_setting("form_renderers")
     return get_renderer(renderers, **kwargs)
 
 
 def get_field_renderer(**kwargs):
-    renderers = get_bootstrap_setting("field_renderers")
+    renderers = get_patternfly_setting("field_renderers")
     return get_renderer(renderers, **kwargs)
