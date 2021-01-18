@@ -1,9 +1,12 @@
 # django-patternfly
 
+![CI](https://github.com/Rintsi/django-patternfly/workflows/CI/badge.svg)[![Coverage Status](https://coveralls.io/repos/github/Rintsi/django-patternfly/badge.svg?branch=master)](https://coveralls.io/github/Rintsi/django-patternfly?branch=master)
+
 Patternfly integration for Django. Ported from [django-bootstrap4](https://github.com/zostera/django-bootstrap4)
 
-DISCLAIMER: This is a port done over the weekend for R'n'D purposes. It is NOT
-usable in it's current state
+DISCLAIMER: This is a port done over the weekend and is a very poorly featured
+package. The only purpose for this currently is to provide a CSS to be used in
+your project templates
 
 ## Goal
 
@@ -43,15 +46,16 @@ The full documentation is (will be) at https://django-patternly.readthedocs.io/
 ```djangotemplate
 {% load patternfly %}
 
-{# Display a form #}
-
-<form action="/url/to/submit/" method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-        <button type="submit" class="btn btn-primary">Submit</button>
-    {% endbuttons %}
-</form>
+<html>
+    <head>
+        {% patternfly_css %}
+    </head>
+    <body>
+        {% block patternfly_content %}
+            Main Content
+        {% endblock %}
+    </body>
+</html>
 ```
 
 ## Development
