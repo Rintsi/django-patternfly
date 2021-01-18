@@ -30,7 +30,7 @@ register = template.Library()
 
 
 @register.filter
-def bootstrap_setting(value):
+def patternfly_setting(value):
     """
     Get a setting.
 

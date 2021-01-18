@@ -12,7 +12,7 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "django.contrib.gis",
     # Our tests
-    "bootstrap4",
+    "patternfly",
     "tests",
 )
 
@@ -45,10 +45,8 @@ TEMPLATES = [
     }
 ]
 
-BOOTSTRAP4 = {
-    "theme_url": "//example.com/theme.css",
+PATTERNFLY = {
+    "theme_url": None,
     "javascript_in_head": True,
-    "required_css_class": "bootstrap4-req",
-    "error_css_class": "bootstrap4-err",
-    "success_css_class": "bootstrap4-bound",
+    "include_jquery": False,
 }

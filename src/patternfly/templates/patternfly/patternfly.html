@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load patternfly %}
-{% if 'use_i18n'|bootstrap_setting %}
+{% if 'use_i18n'|patternfly_setting %}
     {% load i18n %}
     {% get_current_language as LANGUAGE_CODE %}
 {% endif %}
@@ -19,7 +19,7 @@
     {% patternfly_css %}
 
     <!-- Bootstrap JavaScript if it is in head -->
-    {% if 'javascript_in_head'|bootstrap_setting %}
+    {% if 'javascript_in_head'|patternfly_setting %}
         {% bootstrap_javascript %}
     {% endif %}
 
@@ -34,7 +34,7 @@
 {% block patternfly_after_content %}{% endblock %}
 
 <!-- Bootstrap JavaScript if it is in body -->
-{% if not 'javascript_in_head'|bootstrap_setting %}
+{% if not 'javascript_in_head'|patternfly_setting %}
     {% bootstrap_javascript %}
 {% endif %}
 

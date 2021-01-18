@@ -1,28 +1,27 @@
 from django.test import TestCase, override_settings
 
-from bootstrap4.bootstrap import get_bootstrap_setting, include_jquery, jquery_slim_url, jquery_url
-
+from patternfly.patternfly import get_patternfly_setting, include_jquery, jquery_slim_url, jquery_url
 
 class SettingsTest(TestCase):
-    def test_get_bootstrap_setting(self):
-        self.assertIsNone(get_bootstrap_setting("SETTING_DOES_NOT_EXIST"))
-        self.assertEqual("not none", get_bootstrap_setting("SETTING_DOES_NOT_EXIST", "not none"))
+    def test_get_patternfly_setting(self):
+        self.assertIsNone(get_patternfly_setting("SETTING_DOES_NOT_EXIST"))
+        self.assertEqual("not none", get_patternfly_setting("SETTING_DOES_NOT_EXIST", "not none"))
         # Override a setting
-        with self.settings(BOOTSTRAP4={"SETTING_DOES_NOT_EXIST": "exists now"}):
-            self.assertEqual(get_bootstrap_setting("SETTING_DOES_NOT_EXIST"), "exists now")
+        with self.settings(PATTERNFLY={"SETTING_DOES_NOT_EXIST": "exists now"}):
+            self.assertEqual(get_patternfly_setting("SETTING_DOES_NOT_EXIST"), "exists now")
 
     def test_jquery_url(self):
         self.assertEqual(
             jquery_url(),
             {
-                "url": "https://code.jquery.com/jquery-3.5.1.min.js",
-                "integrity": "sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2",
+                "url": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js",
+                "integrity": "sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==",
                 "crossorigin": "anonymous",
             },
         )
 
     @override_settings(
-        BOOTSTRAP4={
+        PATTERNFLY={
             "jquery_url": {
                 "url": "https://example.com/jquery.js",
                 "integrity": "we-want-a-different-jquery",
@@ -44,19 +43,19 @@ class SettingsTest(TestCase):
         self.assertEqual(
             jquery_slim_url(),
             {
-                "url": "https://code.jquery.com/jquery-3.5.1.slim.min.js",
-                "integrity": "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj",
+                "url": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js",
+                "integrity": "sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==",
                 "crossorigin": "anonymous",
             },
         )
 
     def test_include_jquery(self):
         self.assertEqual(include_jquery(), False)
-        with self.settings(BOOTSTRAP4={"include_jquery": False}):
+        with self.settings(PATTERNFLY={"include_jquery": False}):
             self.assertEqual(include_jquery(), False)
-        with self.settings(BOOTSTRAP4={"include_jquery": True}):
+        with self.settings(PATTERNFLY={"include_jquery": True}):
             self.assertEqual(include_jquery(), True)
-        with self.settings(BOOTSTRAP4={"include_jquery": "full"}):
+        with self.settings(PATTERNFLY={"include_jquery": "full"}):
             self.assertEqual(include_jquery(), "full")
-        with self.settings(BOOTSTRAP4={"include_jquery": "slim"}):
+        with self.settings(PATTERNFLY={"include_jquery": "slim"}):
             self.assertEqual(include_jquery(), "slim")

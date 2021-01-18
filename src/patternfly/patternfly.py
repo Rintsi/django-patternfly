@@ -29,26 +29,9 @@ PATTERNFLY_DEFAULTS = {
         "integrity": "sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==",
         "crossorigin": "anonymous",
     },
-    "bootstrap_url": {
-        "url": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js",
-        "integrity": "sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw==",
-        "crossorigin": "anonymous",
-    },
     "javascript_in_head": False,
     "include_jquery": False,
-    "use_i18n": False,
-    "horizontal_label_class": "col-md-3",
-    "horizontal_field_class": "col-md-9",
-    "set_placeholder": True,
-    "required_css_class": "",
-    "error_css_class": "",
-    "success_css_class": "pf-m-success",
-    "formset_renderers": {"default": "patternfly.renderers.FormsetRenderer"},
-    "form_renderers": {"default": "patternfly.renderers.FormRenderer"},
-    "field_renderers": {
-        "default": "patternfly.renderers.FieldRenderer",
-        "inline": "patternfly.renderers.InlineFieldRenderer",
-    },
+    "use_i18n": False
 }
 
 
