@@ -40,6 +40,7 @@ jobs:
       - name: Upload coveralls
         env:
           COVERALLS_PARALLEL: true
+          COVERALLS_SERVICE_NAME: github
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: coveralls
 
